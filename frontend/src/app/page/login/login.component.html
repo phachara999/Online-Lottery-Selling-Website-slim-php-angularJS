@@ -1,0 +1,48 @@
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;700&family=Sarabun:wght@100&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body style="background-image: url('/assets/img/rm222batch2-mind-03.jpg');">
+  <!-- This is an example component -->
+<div class="flex flex-col h-screen bg-gradient-to-b from-[#063970] to-blue-200">
+       <div class="grid place-items-center mx-2 my-20 sm:my-auto" x-data="{ showPass: true }">
+           <div class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12
+               px-6 py-10 sm:px-10 sm:py-6
+               bg-white rounded-lg shadow-md lg:shadow-lg">
+               <div class="text-center mb-4">
+                   <p class="text-4xl text-gray-900 dark:text-white pt-5 pb-3">Login</p>
+               </div>
+               <form [formGroup]="login"  class="space-y-5" method="POST">
+                <label  for="">อีเมล</label>
+                   <div>
+                       <input formControlName="email"  id="email" type="email" class="block w-full py-3 px-3 mt-2
+                           text-gray-800 appearance-none
+                           border-2 
+                           focus:text-gray-500 focus:outline-none focus:border-gray-200 rounded-md" />
+                   </div>
+
+                   <div class="relative w-full">
+                    <label for="">รหัสผ่าน</label>
+                       <input type="password" formControlName="pass" id="password" class="block w-full py-3 px-3 mt-2 mb-4
+                           text-gray-800 appearance-none
+                           border-2 
+                           focus:text-gray-500 focus:outline-none focus:border-gray-200 rounded-md" />
+                   </div>
+                   <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <button (click)="submit()" style="margin-right: 20px;" class="btn info" type="button">
+                      เข้าสู่ระบบ
+                    </button>
+                    <a routerLink="/register"   class="btn info" type="button" href="">สมัครสมาชิก</a>
+                    <a routerLink="/" style="margin-left: 10px;"  class="btn info" type="button" href="">หน้าแรก</a>
+                  </div>
+               </form>
+           </div>
+   </div>
+</div>
+</body>

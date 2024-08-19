@@ -1,0 +1,219 @@
+
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;700&family=Sarabun:wght@100&display=swap" rel="stylesheet">
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body style="background-image: url('/assets/img/rm222batch2-mind-03.jpg'); padding-top: 30px;">
+    <div  class="container">
+      <div class=" card1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+       
+        <div>
+          <p class="text-4xl text-gray-900 dark:text-white pt-5">ลงชื่อเข้าใช้</p>
+          <div>
+            <form  [formGroup]="registerForm" class="w-full max-w-lg">
+              <div class="flex flex-wrap -mx-3">
+                <div class="w-full md:w-1/2 px-3">
+                  <label
+                    class=""
+                    for="grid-first-name"
+                  >
+                    ชื่อ
+                  </label>
+                  <input
+                  formControlName="fname"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-2 mt-2 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name"
+                    type="text"
+                    placeholder="ชื่อ"
+                  />
+                  <div *ngIf="registerForm.get('fname')!.hasError('required') && registerForm.get('fname')!.touched">
+                    <p class="text-red-600 text-xs">
+                      โปรดใส่ชื่อ
+                    </p>
+                  </div>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                  <label
+                    class="mt-2"
+                    for="grid-last-name"
+                  >
+                    นามสกุล
+                  </label>
+                  <input
+                  formControlName="lname"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 mt-2"
+                    id="grid-last-name"
+                    type="text"
+                    placeholder="นามสกุล"
+                  />
+                  <div *ngIf="registerForm.get('lname')!.hasError('required') && registerForm.get('lname')!.touched">
+                    <p class="text-red-600 text-xs">
+                      โปรดใส่นามสกุล
+                    </p>
+                  </div>
+
+                </div>
+                
+              </div>
+              
+              <div class="flex flex-wrap -mx-3 mb-3">
+                <div class="w-full px-3">
+                  <label
+                    class="mb-2"
+                    for="grid-password"
+                  >
+                    รหัสผ่าน
+                  </label>
+                  <input
+                  formControlName="password1"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password"
+                    type="password"
+                    placeholder="******************"
+                  />
+                  <div *ngIf="(registerForm.get('password1')!.hasError('pattern') || registerForm.get('password1')!.hasError('minLength') || registerForm.get('password1')!.hasError('required')) && registerForm.get('password1')!.touched">
+                    <p class="text-red-600 text-xs">
+                      อย่างต่ำแปดตัว มีเลขและตัวอักษรอย่างน้อยหนึ่งตัว
+                    </p>
+                  </div>
+                  
+                </div>
+                <div class="w-full px-3">
+                  <label
+                    class=""
+                    for="grid-password"
+                  >
+                    ยืนยันรหัสผ่าน
+                  </label>
+                  <input
+                    formControlName="password2"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-password-confirm"
+                    type="password"
+                    placeholder="******************"
+                  />
+                  <div *ngIf="registerForm.get('password2')?.hasError('passwordMismatch') && registerForm.get('password2')?.touched" class="text-red-600 text-xs">
+                    รหัสผ่านไม่ตรงกัน
+                  </div>
+                  
+                </div>
+                <div class="w-full px-3">
+                    <label
+                      class=""
+                      for="grid-email"
+                    >
+                      อีเมล
+                    </label>
+                    <input
+                    formControlName="email"
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="grid-email"
+                      type="email"
+                      placeholder="อีเมล"
+                    />
+                    <div *ngIf="(registerForm.get('email')!.hasError('email') || registerForm.get('email')!.hasError('required') )&& registerForm.get('email')!.touched">
+                        <p class="text-red-600 text-xs">
+                            โปรดกรอกอีเมล หรือ ใส่ให้ถูกรูปแบบ
+                        </p>
+                      </div>
+                  </div>
+
+                  <div class="w-full px-3">
+                    <label
+                      class=""
+                      for="grid-email"
+                    >
+                      เบอร์โทร
+                    </label>
+                    <input
+                        formControlName="toe"
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="grid-toe"
+                      type="tel"
+                      placeholder="เบอร์โทร"
+                      maxlength="10"
+                    />
+                    <div *ngIf="registerForm.hasError('toeerr2') && !registerForm.get('toe')!.hasError('required') && !registerForm.get('toe')!.hasError('pattern')">
+                      <p class="text-red-600 text-xs">
+                        ต้องมีเลข 0 อยู่ข้างหน้า
+                      </p>
+                    </div>
+                    
+                    <div *ngIf="registerForm.get('toe')!.hasError('required') && registerForm.get('toe')!.touched">
+                      <p class="text-red-600 text-xs">
+                        โปรดกรอกข้อมูล
+                      </p>
+                    </div>
+                    
+                      
+                      <div *ngIf="registerForm.get('toe')!.hasError('pattern')">
+                        <p class="text-red-600 text-xs">
+                          โปรดกรอกเป็นตัวเลขเท่านั้น
+                        </p>
+                      </div>
+                      <div *ngIf="registerForm.hasError('toeerr')">
+                        <p class="text-red-600 text-xs">
+                          ใส่ให้ครบ 10 ตัว
+                        </p>
+                      </div>
+                  </div>
+                 
+              </div>
+            
+              <label
+                    class=" "
+                    for="grid-password"
+                  >
+                    วันเดือนปีเกิด
+                  </label>
+
+                    <br>
+                    <input formControlName="date"  matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+          
+                  
+                    <p>(คลิกที่ไอคอนเพื่อเลือก วัน/เดือน/ปีเกิด)</p>
+                    
+                    <div *ngIf="registerForm.get('date')!.hasError('required') && registerForm.get('date')!.touched">
+                        <p class="text-red-600 text-xs">
+                          โปรดกรอกวันเกิด
+                        </p>
+                      </div>
+                    <div *ngIf="registerForm.get('date')!.hasError('agenoy') && registerForm.get('date')!.touched">
+                        <p class="text-red-600 text-xs">
+                          ต้องอายุ 18 ปีขึ้นไปเท่านั้น
+                        </p>
+                      </div>
+                  
+                      <div *ngIf="registerForm.valid && registerForm.touched; else other_content" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                        <button (click)="register()" style="margin-right: 20px;" class="btn info" type="button">
+                          สมัครสมาชิก
+                        </button>
+                      </div>
+                      <ng-template #other_content>
+                        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                          <button disabled style="margin-right: 20px;" class="btn info2" type="button">
+                            สมัครสมาชิก
+                          </button>
+                          <a routerLink="/login"   class="btn info" type="button" href="">เข้าสู่ระบบ</a>
+                          <a routerLink="/" style="margin-left: 10px;"  class="btn info" type="button" href="">หน้าแรก</a>
+                        </div>
+                       
+                      </ng-template>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </body>
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;700&family=Sarabun:wght@100&display=swap"
+    
+        rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<mat-toolbar>
+    <span routerLink="" style="font-weight: bolder; cursor: pointer;">อิฐพารวย</span>
+    <div class="nav-menu">
+        <div>
+            <span routerLink="/to-buy" style="font-size: 13px; cursor: pointer; margin-left: 30px;">กระเป๋าล็อตเตอรี่</span>
+            <span  style="  text-shadow: 2px 2px 5px black; font-size: 13px; margin-left: 30px; cursor: pointer;">ประวัติการซื้อ</span>
+            <!-- <span routerLink="/my-lot" style="font-size: 13px; margin-left: 30px; cursor: pointer;">ล็อตเตอรี่ของฉัน</span> -->
+        </div>
+        <div>
+            <div  *ngIf="data" >
+                <span  title="โปรไฟล์" style="font-size: 13px; cursor: pointer; margin-left: 15px;">{{ this.data.fname }}</span>
+                <span (click)="logout()"  title="ออกจากระบบ" style="font-size: 13px; cursor: pointer; margin-left: 15px;">ออกจากระบบ</span>
+               
+              </div>
+        </div>
+    </div>
+  </mat-toolbar>
+
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 35px; margin-top: 30px;">
+        <p style="margin-bottom: 20px; font-size: xx-large; font-weight: bold;">ประวัติการซื้อ</p>
+    </div>
+    <div>
+        <div><label for="">ค้นหาด้วยวันที่</label>
+            <select name="" id="datekonha">
+                <option *ngFor="let item of data3" value="{{ item.date }}">{{ item.date }}</option>
+            </select>
+            <button (click)="konha()" style="margin-left: 10px;">ค้นหา</button> <button  (click)="all()"  style="margin-left: 10px;">ทั้งหมด</button><br>
+            <label for="">ค้นหาด้วยเลข</label>
+            <input style="text-align: center;" value="X" disabled id="ip1" type="text">
+            <input style="text-align: center;" value="X" disabled id="ip2" type="text">
+            <input style="text-align: center;" value="X" disabled id="ip3" type="text">
+            <input style="text-align: center;" id="ip4" type="text">
+            <input style="text-align: center;" id="ip5" type="text">
+            <input style="text-align: center;" id="ip6" type="text">
+            <button  (click)="konha2()"  style="margin-left: 10px;">ค้นหา</button> <br>
+            <div style="margin-bottom: 10px;" *ngIf="this.data4.length > 0">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ชื่อ</th>
+                        <th scope="col">เลขสลาก</th>
+                        <th scope="col">จำนวน</th>
+                        <th scope="col">ราคา</th>
+                        <th scope="col">วันที่</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let datalop of this.data4; index as i">
+                        <td scope="row">{{ this.data.fname }} {{ this.data.lname }}</td>
+                        <td>{{ datalop.number }}</td>
+                        <td>1 ใบ</td>
+                        <td>{{ datalop.price_lot }} บาท</td>
+                        <td>{{ datalop.date }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row"><p style="font-weight: bolder;">ราคารวม</p></td>
+                        <td></td>
+                        <td></td>
+                        <td><p style="font-weight: bolder;">{{  this.totalpriceData4 }} บาท</p></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="box" style="margin-top: 10px;">
+            <div class="text-top">
+                <div>
+                    <p>ลำดับที่</p>
+                </div>
+                <div>
+                    <p>วันที่ซื้อ</p>
+                </div>
+                <div>
+                    <p>จำนวนใบ</p>
+                </div>
+                <div style="margin-right: 30px;">
+                    <p>ราคารวม</p>
+                </div>
+                <div>
+                    <p>รายละเอียด</p>
+                </div>
+             </div>
+             <hr>
+             <div *ngIf="this.data1.length > 0;else nodata">
+                <div *ngFor="let item of this.data1; index as i" class="text">
+                    <div>
+                        <p>{{ i+1 }}</p>
+                    </div>
+                    <div>
+                        <p>{{ item.date }}</p>
+                    </div>
+                    <div>
+                        <p>{{ item.total_bai }}</p>
+                    </div>
+                    <div>
+                        <p>{{ item.total }} บาท</p>
+                    </div>
+                    <div>
+                        <a [routerLink]="[ '/buy-detail',item.ID]" class="btn info" type="button">
+                            ดูรายละเอียด
+                        </a>
+                    </div>
+                 </div>
+             </div>
+             <ng-template #nodata>
+                <div>
+                    <p style="text-align: center ; margin-top: 10px;">ยังไม่มีการซื้อ</p>
+                </div>
+             </ng-template>
+             <hr>
+        </div>
+    </div>
+  </div>
+

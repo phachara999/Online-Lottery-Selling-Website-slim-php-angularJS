@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;700&family=Sarabun:wght@100&display=swap"
+        rel="stylesheet">
+</head>
+
+<mat-toolbar>
+    <span routerLink="" style="font-weight: bolder; cursor: pointer;">อิฐพารวย</span>
+    <div class="nav-menu">
+        <div>
+            <span routerLink="/to-buy" style="font-size: 13px; cursor: pointer; margin-left: 30px;">กระเป๋าล็อตเตอรี่</span>
+            <span routerLink="/buy-his" style="font-size: 13px; margin-left: 30px; cursor: pointer;">ประวัติการซื้อ</span>
+            <!-- <span routerLink="/my-lot" style="font-size: 13px; margin-left: 30px; cursor: pointer;">ล็อตเตอรี่ของฉัน</span> -->
+        </div>
+        <div>
+            <!-- <span routerLink="/register" style="font-size: 13px; cursor: pointer;">สมัครสมาชิก</span> -->
+        </div>
+    </div>
+  </mat-toolbar>
+
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 35px; margin-top: 30px;">
+        <p style="margin-bottom: 20px; font-size: xx-large; font-weight: bold;">รายละเอียดคำสั่งซื้อ</p>
+    </div>
+    <div style="width: 800px; margin:0 auto;">
+        <p>รวมทั้งหมด {{ this.data.total_bai }} ใบ</p>
+        <p>วันที่ {{ this.data.date }}</p>
+        <hr>
+        <div *ngFor="let lotde of this.data.number; index as i" style="margin-top: 10px;">
+            <div class="text">
+                <div>
+                    <p>ชื่อ - นามสกุล</p>
+                </div>
+                <div>
+                    <p>{{this.datauser!.fname}} {{this.datauser!.lname}}</p>
+                </div>
+            </div>
+            <div class="text">
+                <div>
+                    <p>เลขสลาก</p>
+                </div>
+                <div>
+                    <p>{{ lotde }}</p>
+                </div>
+            </div>
+            <div class="text">
+                <div>
+                    <p>ราคา/ใบ</p>
+                </div>
+                <div>
+                    <p>{{ this.data.price_lot[i] }} บาท</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+            <div style="margin-top: 15px;" class="text">
+                <div>
+                    <p style="font-weight: bold;">ราคารวม</p>
+                </div>
+                <div>
+                    <p style="font-weight: bold;">{{ this.data.total }} บาท</p>
+                </div>
+            </div>
+    </div>
+  </div>

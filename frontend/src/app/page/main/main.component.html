@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;700&family=Sarabun:wght@100&display=swap"
+    rel="stylesheet">
+</head>
+
+<body >
+  <div class="bg">
+
+  <mat-toolbar>
+    <span style="font-weight: bolder; cursor: pointer;">อิฐพารวย</span>
+   <div class="nav-menu">
+    <div>
+      <span routerLink="to-buy" style="font-size: 13px;  cursor: pointer;  margin-left: 30px;">กระเป๋าล็อตเตอรี่</span>
+     
+      <span routerLink="buy-his" style="font-size: 13px; margin-left: 30px; cursor: pointer;">ประวัติการซื้อ</span>
+      <!-- <span routerLink="my-lot" style="font-size: 13px; margin-left: 30px; cursor: pointer;">ล็อตเตอรี่ของฉัน</span> -->
+    </div>
+    <div  *ngIf="data;else nologin" >
+      <span  title="โปรไฟล์" style="font-size: 13px; cursor: pointer;">{{this.data.fname}}</span>
+      <span (click)="logout()"  title="ออกจากระบบ" style="font-size: 13px; cursor: pointer; margin-left: 15px;">ออกจากระบบ</span>
+    </div>
+    <ng-template #nologin> <div>
+      <span  routerLink="register" style="font-size: 13px; cursor: pointer;">สมัครสมาชิก</span>
+      <span  routerLink="login" style="font-size: 13px; cursor: pointer; margin-left: 30px;">เข้าสู่ระบบ</span>
+    </div></ng-template>
+   
+   </div>
+  </mat-toolbar>
+
+    <div class="container">
+      <!-- ช่องค้นหา ช่องค้นหา ช่องค้นหา -->
+  
+      <div>
+        <div style="margin-bottom: 20px;text-align: center; padding-top: 15px;">
+          <p style="margin-bottom: 20px; font-size: xx-large; font-weight: bold;">ค้นหาเลขเด็ด</p>
+          <p>งวดวันที่ {{ currentDayMessage }}</p>
+        </div>
+        <div style="margin-bottom: 20px; display: flex; justify-content: center;">
+          <input value="X"   disabled class="centered-input" style="width: 100px; height: 100px;" id="myInput" type="text" #inputElements />
+          <input value="X"  disabled style="width: 100px; height: 100px;" class="centered-input" id="myInput" type="text" #inputElements />
+          <input value="X" disabled style="width: 100px; height: 100px;" class="centered-input" id="myInput" type="text" #inputElements />
+          <input [(ngModel)]="input1" id="myInput1" style="width: 100px; height: 100px;" class="centered-input" id="myInput1" type="number" #inputElements />
+          <input [(ngModel)]="input2" id="myInput2" style="width: 100px; height: 100px;" class="centered-input" id="myInput2" type="number" #inputElements />
+          <input [(ngModel)]="input3" id="myInput3" style="width: 100px; height: 100px;" class="centered-input" id="myInput3" type="number" #inputElements />
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <p style="margin-right: 50px;">งวดที่</p>
+          <p style="margin-left: 50px;">ชุดที่</p>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <input [(ngModel)]="input4" id="myInput4" maxlength="2" style="width: 50px; height: 50px;"  type="number" #inputElements/>
+             <input [(ngModel)]="input5" id="myInput5" maxlength="2" style="width: 50px; height: 50px; margin-right: 10px;" type="number" #inputElements/>
+            <input [(ngModel)]="input6" id="myInput6" maxlength="2" style="width: 50px; height: 50px; margin-left: 10px;"  type="number" #inputElements/>
+           <input [(ngModel)]="input7" id="myInput7" maxlength="2" style="width: 50px; height: 50px;" type="number" #inputElements/>
+        </div>
+  
+        <div style="display: flex; justify-content: center; margin-bottom: 20px; margin-top: 20px ;">
+          <button (click)="konha()" style="margin-right: 20px;" class="btn info" type="button">
+            ค้นหาเลข
+          </button>
+          <button (click)="random()" style="margin-right: 20px;" class="btn info" type="button">
+            สุ่มเลย
+          </button>
+        </div>
+        <hr>
+      </div>
+  
+      <!-- การ์ดล็อตเตอรี่  การ์ดล็อตเตอรี่  การ์ดล็อตเตอรี่ -->
+  
+      
+      <div style="font-size: x-large; font-weight: bold; display: flex; justify-content: center; height: 300px; align-items: center;" *ngIf="lotteries.length === 0">
+      ล็อตเตอรี่เลขนี้ได้หมดแล้ว
+      </div>
+      
+  
+      <div class="row grid-container">
+        <div *ngFor="let lottery of this.lotteries"  class="card grid-item" style=" margin-left: 20px; margin-bottom: 5px; margin-top: 20px;">
+          <div style="margin-left: 8px;" class="card-top">
+            <img id="img-ll" width="25" height="25"
+              src="https://upload.wikimedia.org/wikipedia/th/8/88/%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%AA%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9A%E0%B8%B2%E0%B8%A5.gif"
+              alt="">
+            <span style="font-size: 15px; ">สลากกินแบ่งรัฐบาล</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;" class="card-mid">
+            <div style="height: 50px ; margin-left: 8px;" class="card-mid-lil">
+              <div
+                style="background-color: #fcf9df; margin-top:6px ; border-radius: 10px; margin-top: 10px; height: 50px;  width: 130px; font-size: xx-large;font-weight: bold; display: flex; justify-content: center; align-items: center;">
+               {{ lottery.number }}</div>
+              <div style=" margin-left: 20px; display: flex;width: 100px; justify-content: space-around;">
+                <div>
+                  <p style="color: #858585;">งวดที่</p>
+                  <p style=" font-weight:bold; color: black;"> {{ lottery.period_lot }}</p>
+                </div>
+                <div>
+                  <p style="color: #858585;">ชุดที่</p>
+                  <p style=" font-weight: bold; color: black;"> {{ lottery.set_lot }}</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button (click)="selectlot(lottery.id)" style="margin-right: 20px;" class="btn info" type="button">
+                เลือก
+              </button>
+            </div>
+          </div>
+          <div
+            style=" color: #b4b4b4; margin-left: 8px;  display: flex; align-items: center; height: 30px; justify-content: space-between;"
+            class="class-bottom">
+            <div>อิฐพารวย</div>
+            <div style=" font-weight: bold; color: black; margin-right: 30px;">{{ lottery.price_lot }} บาท</div>
+          </div>
+          <hr>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>
+
+</body>
+
+</html>

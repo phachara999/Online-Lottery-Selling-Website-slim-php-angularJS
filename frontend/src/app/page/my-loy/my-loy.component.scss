@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+font-family: 'Sarabun', sans-serif;
+}
+
+
+.container{
+    width: 1100px;
+    min-height: calc(100vh - 60px);
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    background-color:#ffffff;
+    // border: 3px solid #2196F3;;
+    border-radius: 10px;
+    border-top: none;
+    border-bottom: nones;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+
+mat-toolbar {
+    background-color: #ADD8E6;
+    box-shadow: 105;
+    padding-left: 130px;
+    // position: fixed;
+    // border-radius: 10px;
+    height: 60px;
+    // margin-bottom: 5px;
+    // border: 3px solid #2196F3;;
+    border-left: none;
+    border-right: none;
+    
+    background-image: url("/assets/img/rm222batch2-mind-03.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+  
+  /* เปลี่ยนสีข้อความภายใน mat-toolbar */
+  mat-toolbar span {
+    color: #000000; /* ตั้งค่าสีข้อความเป็นสีขาว */
+  }
+  .nav-menu{
+    width:100% ;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+  }
+  .text{
+   display:  flex; 
+   justify-content: space-between;
+  }
